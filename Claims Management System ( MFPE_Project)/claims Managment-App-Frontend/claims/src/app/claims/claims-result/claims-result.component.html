@@ -1,0 +1,78 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="parent">
+  <div class="container" *ngIf="isBillMode">
+    <div class="heading">
+      <h2 style="color: cadetblue;">Bill Status</h2>
+    </div>
+    <div class="bill__details">
+      <!-- <div class="billrow--detail">
+        <h5>Last Paid Date:</h5>
+        <p class="bill--tag">{{ lastPaidDate }}</p>
+      </div>
+
+      <div class="billrow--detail">
+        <h5>Premium Amount Due:</h5>
+        <p class="bill--tag">{{ lateCharge }}</p>
+      </div>
+      <div class="billrow--detail">
+        <h5>Due Date:</h5>
+        <p class="bill--tag">{{ dueDate }}</p>
+      </div> -->
+      <div class="table-responsive">
+      <table class="table">
+        <tr>
+        <th scope="col">Last Paid Date:</th>
+        <td>{{ lastPaidDate }}</td>
+        </tr>
+        <tr>
+          <th scope="col">Premium Amount Due:</th>
+          <td>{{ lateCharge }}</td>
+          </tr>
+          <tr>
+            <th scope="col">Due Date:</th>
+            <td>{{ dueDate }}</td>
+            </tr>
+      </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Status Mode -->
+  <div class="container" *ngIf="!isBillMode">
+    <div class="heading">
+      <h2 style="color: cadetblue;">Claim Status</h2>
+    </div>
+    <div class="bill__details">
+      <!-- <div class="statusrow--detail">
+        <h5>Claim Id:</h5>
+        <p class="bill--tag bold">{{ claimId }}</p>
+      </div>
+
+      <div class="statusrow--detail">
+        <h5>Claim Status:</h5>
+        <p class="bill--tag bold">{{ claimStatus }}</p>
+      </div>
+
+      <div class="statusrow--detail">
+        <h5>description:</h5>
+        <p class="bill--tag">{{ claimDescription }}</p>
+      </div> -->
+      <div class="table-responsive">
+      <table class="table">
+        <tr>
+        <th>ClaimId:</th>
+        <td>{{claimId}}</td>
+        </tr>
+        <tr>
+          <th>Claim status:</th>
+          <td>{{claimStatus}}</td>
+          </tr>
+          <tr>
+            <th>Description:</th>
+            <td>{{claimDescription}}</td>
+            </tr>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>

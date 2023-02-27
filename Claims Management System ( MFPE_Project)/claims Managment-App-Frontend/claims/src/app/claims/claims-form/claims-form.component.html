@@ -1,0 +1,100 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="container">
+  <div class="row">
+    <div
+      class="
+        col-xs-12 col-md-5 col-sm-10 col-sm-offset-1 col-md-offset-2
+        row__content
+      "
+    >
+      <div class="spinner" *ngIf="isValidating" class="spinner">
+        <app-loading-spinner></app-loading-spinner>
+      </div>
+
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm" *ngIf="!isValidating">
+        <div class="heading">
+          <h2 style="color: cadetblue;">
+            {{ isClaimStatusMode ? "Claim Status Portal" : "Bills Portal" }}
+          </h2>
+        </div>
+
+        <div class="form-group" *ngIf="isBillMode">
+          <label for="memberID">Member ID</label>
+          <input
+            type="text"
+            class="form-control"
+            name="memberID"
+            placeholder="Enter member id"
+            ngModel
+            required
+            #memberID="ngModel"
+          />
+          <span *ngIf="memberID.touched && !memberID.valid" style="color: red"
+            >Please enter member ID</span
+          >
+        </div>
+
+        <!-- Claim Status Mode -->
+        <div class="form-group" *ngIf="isClaimStatusMode">
+          <label for="claimID">Claim ID</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter claim id"
+            name="claimID"
+            ngModel
+            required
+            #claimID="ngModel"
+          />
+          <span *ngIf="!claimID.valid && claimID.touched" style="color: red"
+            >Please enter Claim ID</span
+          ><br>
+          <label for="policyID">Policy ID</label>
+          <select
+          class="form-control"
+          name="policyID"
+          ngModel
+          required
+          #policyId="ngModel"
+          
+        >
+          <option
+            *ngFor="let policy of selectDetailsService.policyDetails"
+            [value]="policy.id"
+          >
+            {{ policy.name }}
+          </option>
+        </select>
+          <span *ngIf="policyId.touched && !policyId.valid" style="color: red"
+            >Please enter policy ID</span
+          ><br>
+          <label for="memberID">Member ID</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter member id"
+            name="memberID"
+            ngModel
+            required
+            #memberID="ngModel"
+          />
+          <span *ngIf="!memberID.valid && memberID.touched" style="color: red"
+            >Please enter Member ID</span
+          ><br>
+          
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="!f.valid">
+          {{ isClaimStatusMode ? "View status" : "View bill" }}
+         
+        </button>
+      </form>
+
+      <app-alert
+        [message]="error"
+        *ngIf="error"
+        (close)="handleError()"
+      ></app-alert>
+    </div>
+  </div>
+</div>

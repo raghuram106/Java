@@ -1,0 +1,179 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="container">
+  <div class="spinner" *ngIf="isValidating" class="spinner">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm" *ngIf="!isValidating">
+    <div class="heading">
+      <h2 style="color: cadetblue;">Submit Claim</h2>
+    </div>
+
+    <div class="from-group row">
+      <div class="col-xs-6 col-md-6 row__content">
+        <label for="memberId">Member Id</label>
+        <input
+          type="text"
+          class="form-control"
+          name="memberId"
+          placeholder="Enter member id"
+          ngModel
+          required
+          #memberId="ngModel"
+        />
+        <span *ngIf="memberId.touched && !memberId.valid" style="color: red"
+          >Please enter member ID</span
+        >
+      </div>
+
+
+        <div class="col-xs-6 col-md-6 row__content">
+          <label for="policyId">Policy Id</label>
+          <select
+          class="form-control"
+          name="policyId"
+          ngModel
+          required
+          #policyId="ngModel"
+        >
+          <option
+            *ngFor="let policy of selectDetailsService.policyDetails"
+            [value]="policy.id"
+          >
+            {{ policy.name }}
+          </option>
+        </select>
+          <span *ngIf="policyId.touched && !policyId.valid" style="color: red"
+            >Please enter policy ID</span
+          >
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-xs-6 col-md-6 row__content">
+        <label for="hospitalId">Hospital Id</label>
+        <select
+          class="form-control"
+          name="hospitalId"
+          ngModel
+          required
+          #hospitalId="ngModel"
+        >
+          <option
+            *ngFor="let hospital of selectDetailsService.hospitalDetails"
+            [value]="hospital.id"
+          >
+            {{ hospital.name }}, {{ hospital.location }}
+          </option>
+        </select>
+        <span *ngIf="hospitalId.touched && !hospitalId.valid" style="color: red"
+          >Please enter Hospital ID</span
+        >
+      </div>
+      <div class="col-xs-6 col-md-6 row__content">
+        <label for="memberId">Benefit Id</label>
+        <select
+        class="form-control"
+        name="benefitId"
+        ngModel
+        required
+        #benefitId="ngModel"
+      >
+        <option
+          *ngFor="let benefit of selectDetailsService.benefitDetails"
+          [value]="benefit.id"
+        >
+          {{ benefit.name }}
+        </option>
+      </select>
+      
+        <span *ngIf="benefitId.touched && !benefitId.valid" style="color: red"
+          >Please enter benefit ID</span
+        >
+      </div>
+    </div>
+
+
+    <div class="from-group row">
+      <div class="col-xs-6 col-md-6 row__content">
+        <label for="memberId">claim Id</label>
+        <input
+          type="text"
+          class="form-control"
+          name="claimId"
+          placeholder="Enter claim id"
+          ngModel
+          required
+          #claimId="ngModel"
+        />
+        <span *ngIf="claimId.touched && !claimId.valid" style="color: red"
+          >Please enter claim ID</span
+        >
+      </div>
+
+    
+      
+      <div class="col-xs-6 col-md-6 row__content">
+        <label for="claimAmount">Claimed Amount</label>
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Enter claimed amount"
+          name="claimAmount"
+          ngModel
+          required
+          #claimAmount="ngModel"
+        />
+        <span
+          *ngIf="!claimAmount.valid && claimAmount.touched"
+          style="color: red"
+          >Please enter claim Amount</span
+        >
+      </div>
+      </div>
+<!-- 
+      <div class="form-group row">
+        <div class="col-xs-6 col-md-6 row__content">
+          <label for="staus">status</label>
+          <input
+            type="text"
+            class="form-control"
+            name="status"
+            placeholder="Enter status"
+            ngModel
+            required
+            #status="ngModel"
+          />
+          <span *ngIf="status.touched && !status.valid" style="color: red"
+            >Please enter status</span
+          >
+        </div>
+        <div class="col-xs-6 col-md-6 row__content">
+          <label for="description">description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            placeholder="Enter description"
+            ngModel
+            required
+            #description="ngModel"
+          />
+          <span *ngIf="description.touched && !description.valid" style="color: red"
+            >Please description</span
+          >
+        </div>
+      </div> -->
+  
+    
+
+    <button class="btn btn-primary" type="submit" [disabled]="!f.valid">
+      Submit
+    </button>
+  </form>
+
+  <app-alert
+    [message]="error"
+    *ngIf="error"
+    (close)="handleError()"
+  ></app-alert>
+</div>
