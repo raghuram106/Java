@@ -1,0 +1,1 @@
+export const API_URL = "http://raghutweet-env.eba-j47guver.ap-northeast-1.elasticbeanstalk.com/api/v1.0/tweets"

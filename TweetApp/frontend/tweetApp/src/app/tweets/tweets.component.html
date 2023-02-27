@@ -1,0 +1,77 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<style>
+  table,
+  tr,
+  td,
+  tbody {
+    padding: 0;
+    margin: 0;
+   
+  }
+
+  table{
+    margin-bottom: 10px;
+  }
+</style>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="row">
+  <button (click)="addTweet()" style="text-align: right; padding: auto; align-content: flex-end;"
+    class="btn btn-success" id="addTweet">Post a Tweet</button>
+</div><br><br>
+<div class="alert alert-success" *ngIf='message'>{{message}}</div>
+<div class="container">
+  <table class="table" style="width: 65%;border:solid black;background-color: aqua;" *ngFor="let tweet of tweetsList">
+    <tbody>
+      <tr>
+        <td colspan="2"><i class="glyphicon glyphicon-user"></i>{{tweet.loginId}}
+        </td>
+        <td colspan="2">{{tweet.tweetTime | date | uppercase}}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4" style="text-align: center; background: white;">{{tweet.tweetMessage}}</td>
+      </tr>
+      <tr *ngFor="let i of tweet.reply" >
+        <td colspan="4">
+          {{i}}
+        </td>
+      </tr>
+      <tr style="background: white;">
+        <td colspan="1" >
+          <button type="button"  id="likeTweet" (click)="likeTweet(this.name,tweet.tweetId,tweet)"class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-thumbs-up"></span>Like
+          </button>
+          {{tweet.likeCount}}
+        </td>
+        <td colspan="1" >
+          <button type="button" id="updateTweet" (click)="updateTweet(tweet.loginId,tweet.tweetId)" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-edit"></span>Edit
+          </button>
+        </td>
+        <td colspan="1">
+          <button type="button" id="deleteTweet" (click)="deleteTweet(tweet.loginId,tweet.tweetId)" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-trash"></span>Delete
+          </button>
+        </td>
+        <td colspan="1">
+          <button type="button" class="btn btn-default btn-sm" id="commentTweet" (click)="commentTweet(this.name,tweet.tweetId)">
+            <span class="glyphicon glyphicon-comment"></span>Comment
+          </button>
+        </td>
+      </tr>
+
+      <tr>
+      </tr>
+
+    </tbody>
+
+  </table>
+
+
+</div>

@@ -1,0 +1,14 @@
+<br>
+<br>
+<br>
+<h1>Post a Tweet</h1>
+<div class="container">
+    <fieldset>
+        <label>Tweet Message</label><br>
+        <input type="text" [(ngModel)]="tweet.tweetMessage" class="form-control" name="tweetMessage" placeholder="what's on your mind?">
+    </fieldset> <br>   
+    <button class="btn btn-success" id= "save" (click)="saveTweet()" >POST</button>
+    <div *ngIf=errorMessage>
+        {{errorMessage}}
+    </div>
+</div>

@@ -1,0 +1,140 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<style>
+  .form-group{
+   
+    margin-bottom: 1px;
+      
+  }
+  .panel{
+    padding-bottom: 2px;
+    margin-bottom: 2px;
+  }
+  .panel-heading{
+      padding-bottom: 0px;
+      margin-bottom: 0px;
+  }
+  .panel-body{
+    text-align: 5px;
+    text-indent: 5px;
+    margin-bottom: 0px;
+    
+  }
+</style>
+<div class="container">
+  <div id="loginbox" style="margin-top:80px;"
+    class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+    <div class="panel panel-info" style="border: 0.5px solid black;background-color: azure;">
+      <div class="panel-heading">
+        <div class="panel-title">Register</div>
+      </div>
+
+      <div class="panel-body">
+
+        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+        <form class="well form-horizontal" action=" " method="post" id="contact_form"
+          style="border: 0.5px solid black;background-color: azure;">
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label">First Name</label>
+            <div class="col-md-6 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input name="first_name" [(ngModel)]="user.firstName" placeholder="First Name" class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+
+          <!-- Text input-->
+
+          <div class="form-group">
+            <label class="col-md-4 control-label">Last Name</label>
+            <div class="col-md-6 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input name="last_name" [(ngModel)]="user.lastName" placeholder="Last Name" class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+          
+
+          <!-- Text input-->
+
+          <div class="form-group">
+            <label class="col-md-4 control-label">Username</label>
+            <div class="col-md-6 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input name="user_name" [(ngModel)]="user.loginId" placeholder="Username" class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+
+          <!-- Text input-->
+
+          <div class="form-group">
+            <label class="col-md-4 control-label">Password</label>
+            <div class="col-md-6 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input name="user_password" [(ngModel)]="user.password" placeholder="Password" class="form-control" type="password">
+              </div>
+            </div>
+          </div>
+
+          <!-- Text input-->
+
+          <div class="form-group">
+            <label class="col-md-4 control-label">Confirm Password</label>
+            <div class="col-md-6 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input name="confirm_password" [(ngModel)]="user.confirmPassword" placeholder="Confirm Password" class="form-control" type="password">
+              </div>
+            </div>
+          </div>
+
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label">E-Mail</label>
+            <div class="col-md-6 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                <input name="email" [(ngModel)]="user.email" placeholder="E-Mail Address" class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Text input-->
+
+          <div class="form-group">
+            <label class="col-md-4 control-label">Contact No.</label>
+            <div class="col-md-6 inputGroupContainer">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                <input name="contact_no" [(ngModel)]="user.contactNumber" placeholder="(+91)" class="form-control" type="text">
+              </div>
+            </div>
+          </div>
+
+          <!-- Button -->
+          <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4"><br>
+              <button type="submit" (click)= "registerUser()" class="btn btn-warning">SUBMIT <span
+                  class="glyphicon glyphicon-send"></span></button>
+            </div>
+          </div>
+          <div style="color: black;" class="alert alert-warning" *ngIf='errorMessage'>{{errorMessage}}</div>
+          <div *ngIf="successMessage" class="alert alert-success">
+            <div>{{successMessage}}</div>
+            <div>Click here to <a routerLink="/login">Login</a></div>
+          </div>
+        </form>
+         
+      </div>
+    </div>
+  </div>

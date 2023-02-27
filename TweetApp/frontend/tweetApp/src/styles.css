@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+@import url(https://unpkg.com/bootstrap@4.1.0/dist/css/bootstrap.min.css);
+
+footer a {
+    display: flex;
+    align-items: center;
+  }
+
+  footer {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    line-height: 20px;
+  }
+
+  @media screen and (max-width: 575px) {
+    footer{
+      display: none;
+      visibility: hidden;
+    }
+  }

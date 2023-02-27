@@ -1,0 +1,91 @@
+<style>
+ 
+    .spacer {
+      flex: 1;
+    }
+    .toolbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      background-color: skyblue;
+      color: white;
+      font-weight: 600;
+    }
+    .toolbar #twitter-logo {
+      height: 40px;
+      margin: 0 8px;
+    }
+
+  
+    .content {
+      display: flex;
+      margin: 82px auto 32px;
+      padding: 0 16px;
+      max-width: 960px;
+      flex-direction: column;
+      align-items: center;
+    }
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 16px;
+    }
+  
+    .card {
+      all: unset;
+      border-radius: 4px;
+      border: 1px solid #eee;
+      background-color: #fafafa;
+    
+      height: 40px;
+      width: 200px;
+      margin: 3px 8px 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.2s ease-in-out;
+      line-height: 24px;
+    }
+  
+    .card-container .card:not(:last-child) {
+      margin-right: 0;
+    }
+   a{
+        color: white;
+        text-align: center;
+        margin-right: 10px;
+        padding-block: auto;
+        display: block;
+    
+        
+    }
+    a:link { text-decoration: none; }
+
+   
+  </style>
+<header>
+  <div class="toolbar" role="banner">
+    <a aria-label="Angular on twitter" title="Tweet">
+        <svg id="twitter-logo" height="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+          <rect width="400" height="400" fill="none"/>
+          <path d="M153.62,301.59c94.34,0,145.94-78.16,145.94-145.94,0-2.22,0-4.43-.15-6.63A104.36,104.36,0,0,0,325,122.47a102.38,102.38,0,0,1-29.46,8.07,51.47,51.47,0,0,0,22.55-28.37,102.79,102.79,0,0,1-32.57,12.45,51.34,51.34,0,0,0-87.41,46.78A145.62,145.62,0,0,1,92.4,107.81a51.33,51.33,0,0,0,15.88,68.47A50.91,50.91,0,0,1,85,169.86c0,.21,0,.43,0,.65a51.31,51.31,0,0,0,41.15,50.28,51.21,51.21,0,0,1-23.16.88,51.35,51.35,0,0,0,47.92,35.62,102.92,102.92,0,0,1-63.7,22A104.41,104.41,0,0,1,75,278.55a145.21,145.21,0,0,0,78.62,23" fill="#fff"/>
+        </svg>
+      </a>
+    <span style="margin-right:10px ;">TweetApp</span>
+   <div><a  *ngIf="!basicAuthenticationService.isUserLoggedIn()" routerLink="/home" class="nav-link">Home</a></div>
+   <div><a  *ngIf="basicAuthenticationService.isUserLoggedIn()" routerLink="/tweets" class="nav-link">Tweets</a></div> 
+   <div><a  *ngIf="basicAuthenticationService.isUserLoggedIn()" routerLink="/users" class="nav-link">Search Users</a></div>
+   <div class="spacer"></div>
+      <div><a  *ngIf="!basicAuthenticationService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></div>
+      <div><a  *ngIf="!basicAuthenticationService.isUserLoggedIn()" routerLink="/register" class="nav-link">Register</a></div>
+      <div><a  *ngIf="basicAuthenticationService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a></div>
+    </div>
+ 
+</header>
